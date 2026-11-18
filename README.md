@@ -1,5 +1,7 @@
 # 北京化工大学 · 门票动画
 
+在线体验：[uscfty.github.io/buct-ticket](https://uscfty.github.io/buct-ticket/)
+
 一张横版“门票”动画页面：左侧蓝色票根（校徽、中英文校名、1958），右侧校园插画随骑车小人依次出现，小人沿底部滑轨从左骑到右。页面会自动播放一遍，也可以用手指或鼠标拖动小人/滑轨来回查看。
 
 ![预览](./assets/images/poster.jpg)
@@ -26,6 +28,14 @@ npm run dev -- --host
 npm run build      # 输出到 dist/，全部是相对路径，可直接放到任意静态服务器或 GitHub Pages
 npm run preview    # 本地预览 dist/
 ```
+
+## GitHub Pages 发布
+
+本项目通过 `.github/workflows/deploy.yml` 自动发布。推送到 `main` 后，GitHub Actions 会安装锁定的依赖、构建页面，并将 `dist/` 部署到 GitHub Pages。
+
+网站地址：<https://uscfty.github.io/buct-ticket/>。部署结果可在仓库的 **Actions** 页面查看；仓库的 **Settings → Pages → Source** 应设为 **GitHub Actions**。
+
+后续更新：在本项目目录修改、提交并推送到 `main`，即可自动更新线上页面。
 
 ## 目录结构
 
