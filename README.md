@@ -2,6 +2,8 @@
 
 在线体验：[uscfty.github.io/buct-ticket](https://uscfty.github.io/buct-ticket/)
 
+静态截图（可写入 NFC 网址记录）：[ticket.png](https://uscfty.github.io/buct-ticket/ticket.png)
+
 一张横版“门票”动画页面：左侧蓝色票根（校徽、中英文校名、1958），右侧校园插画随骑车小人依次出现，小人沿底部滑轨从左骑到右。页面会自动播放一遍，也可以用手指或鼠标拖动小人/滑轨来回查看。
 
 ![预览](./assets/images/poster.jpg)
