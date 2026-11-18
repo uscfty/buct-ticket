@@ -1,0 +1,18 @@
+{
+  "name": "buct-ticket",
+  "version": "1.0.0",
+  "private": true,
+  "description": "北京化工大学门票动画（SVG + JavaScript，可拖动滑轨）",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

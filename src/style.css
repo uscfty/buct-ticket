@@ -1,0 +1,131 @@
+/* 字体：思源宋体（Noto Serif SC）子集，仅含页面用到的字符，SIL OFL 1.1 授权 */
+@font-face {
+  font-family: "BUCT Serif";
+  src: url("../assets/fonts/NotoSerifSC-SemiBold.subset.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "BUCT Serif";
+  src: url("../assets/fonts/NotoSerifSC-Bold.subset.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --ar: 1.7778;          /* 画面宽高比，由 main.js 按横/竖屏设置 */
+  --controls-h: 76px;
+  color-scheme: dark;
+}
+
+html {
+  background: #040b1d;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #040b1d;
+  color: #cdb67c;
+  font-family: "BUCT Serif", "Songti SC", "Noto Serif CJK SC", serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;      /* 裁掉画面外溢的背景，避免出现横向滚动 */
+}
+
+.stage-wrap {
+  width: 100%;
+  width: min(100%, calc((100vh - var(--controls-h)) * var(--ar)));
+  width: min(100%, calc((100dvh - var(--controls-h)) * var(--ar)));
+}
+
+#stage {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  /* 长按不弹出选择/放大镜/菜单 */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  /* 画面其余部分：允许页面滚动和双指缩放，但取消双击缩放的 300ms 判定 */
+  touch-action: manipulation;
+}
+
+#stage text {
+  font-family: "BUCT Serif", "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+/* 滑轨热区：手指在这里拖动时不交给浏览器做滚动/缩放（iOS 13+ 生效；更早版本由 main.js 的 preventDefault 兜底） */
+#railHit {
+  touch-action: none;
+  cursor: grab;
+}
+.dragging #railHit,
+.dragging {
+  cursor: grabbing;
+}
+
+.controls {
+  position: relative;
+  z-index: 1;
+  height: var(--controls-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.hint {
+  margin: 0;
+  opacity: 0.75;
+  transition: opacity 0.4s;
+}
+.hint.used {
+  opacity: 0.35;
+}
+
+.replay {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: #f3d684;
+  background: rgba(0, 69, 155, 0.35);
+  border: 1px solid rgba(205, 182, 124, 0.6);
+  border-radius: 999px;
+  padding: 8px 18px;
+  min-height: 40px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.replay:active {
+  background: rgba(0, 69, 155, 0.7);
+}
+
+/* ?render 模式：给 tools/render.py 逐帧截图用，固定 1920×1080 */
+.render .page {
+  display: block;
+  min-height: 0;
+  padding: 0;
+}
+.render .stage-wrap {
+  width: 1920px;
+}
+.render .controls {
+  display: none;
+}
